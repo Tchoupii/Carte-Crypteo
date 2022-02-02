@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "geoportal-extensions-leaflet": "^2.2.2",
     "jquery": "^3.6.0",
     "jsquery": "^1.1.1"
   }
