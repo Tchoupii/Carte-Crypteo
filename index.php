@@ -34,7 +34,7 @@
 
             <div id="map"></div>
             <script type="text/javascript">
-                var carte = L.map("map").setView([43.918466289753, 2.145517385159], 13);
+                var carte = L.map("map").setView([43.918466289753, 2.145517385159], 9);
                 var tuiles = L.tileLayer(" https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png ").addTo(carte);
                 var point = L.marker([43.918466289753, 2.145517385159]);
                 point.addTo(carte);
@@ -51,7 +51,7 @@
                             slug = slug.replace(/-/g, ' ');
                         }
                     }
-                    console.log(slug);
+                    
 
                     $.ajax({
                             type: 'GET',
@@ -65,7 +65,21 @@
                             var coordonees = L.latLng(parseFloat(tab[0]), parseFloat(tab[1]));
                             console.log(coordonees);
                             var mark = L.marker(coordonees).addTo(carte);
-                            carte.panTo(coordonees, 12)
+                            carte.panTo(coordonees, 10)
+                            $.ajax({
+                                type: 'GET',
+                                url: "rayon.php?lat="+parseFloat(tab[0])+"&lng="+parseFloat(tab[1])
+                            })
+                            .done(function(response){
+                                var rayon = response.split(";");
+                                console.log(rayon);
+                                var coordonneesRayon;
+                                for(var i =0; i<=rayon.length ; i++){
+                                    coordonneesRayon = L.latLng(parseFloat(rayon[i]), parseFloat(rayon[i+1]));
+                                    console.log(coordonneesRayon);
+                                    L.marker(coordonneesRayon).addTo(carte);
+                                }
+                            })
                             
                         })
                         .fail(function(error) {
