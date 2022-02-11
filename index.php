@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Leaflet Map</title>
-    <script src="./autocomplete.js"></script>
+    <script src="./autocompletion.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
